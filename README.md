@@ -1,8 +1,6 @@
 # minecraft-terraform
 
- Modify stg.tfvars to modify the host paths and ports you want to expose 
- 
- Modify Dockerfile with username you want to give for root (line 5)
+ Modify prd.tfvars to modify the host paths and ports you want to expose 
  
  Build Dockerfile (docker build -t minecraft .)
 
