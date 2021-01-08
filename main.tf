@@ -1,17 +1,16 @@
 provider "docker" {
-    host = "tcp://localhost:2375"
+    host = "tcp://127.0.0.1:2375"
 }
 
-resource "docker_container" "server" {
-    count = "1"
-    name = "foo${count.index}"
+resource "docker_container" "single_server" {
+    name = "minecraft_server"
     image = "${docker_image.minecraft_image.latest}"
     ports {
-        internal = 25565
-        external = "2556${count.index+5}"
+        internal = var.internal_port_number
+        external = "25565"
     }
     volumes {
-        host_path = "C:\\Users\\IsaacCampbell\\Desktop\\Minecraft Infrastructure\\server${count.index+1}"
+        host_path = var.single_host_path
         container_path = "/data"
     }
     env = ["EULA=TRUE"]
@@ -19,7 +18,7 @@ resource "docker_container" "server" {
 
 
 resource "docker_image" "minecraft_image" {
-    name = "minecraft_server"
+    name = "minecraft"
 }
 
 
