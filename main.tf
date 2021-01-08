@@ -29,7 +29,7 @@ resource "docker_container" "modded_single_server" {
   }
   env = [
       "EULA=TRUE",
-      "FORGE_INSTALLER=forge-1.14.4-28.1.115-launcher.jar"
+      "FORGE_INSTALLER=mod-storage/forge-1.14.4-28.1.115-launcher.jar"
   ]
 }
 
